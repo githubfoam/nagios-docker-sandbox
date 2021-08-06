@@ -20,10 +20,16 @@ provider supports automatic port collision detection and resolution.
 vagrant ssh vg-compute-12
 
 automated
+
 servers_list.yml
 shell_provision: "provisioning/nagios-docker-alpine311.sh"
 
-manually
+Browse
+http://192.168.20.20:80/nagios/
+user/password nagiosadmin/nagios
+
+
+manually - optional
 
 vagrant@vg-compute-12:~$ cp -R /vagrant/dockerfiles/ .
 
