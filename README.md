@@ -69,43 +69,6 @@ user/password nagiosadmin/nagios
 ~~~~
 
 ~~~~
-bento/centos-stream-8
-
-del Vagrantfile
-vagrant init --template Vagrantfile.erb 
-vagrant up vg-compute-13
-vagrant ssh vg-compute-13
-
-sudo docker run -it -d --name ubuntu2004 ubuntu:20.04 /bin/bash
-
-[vagrant@vg-compute-13 ~]$ sudo docker container ls
-CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
-4cedf1ef8534   ubuntu:20.04   "/bin/bash"   3 minutes ago   Up 3 minutes             ubuntu2004
-
-typing "Dockerfile.ubuntu2004" manually on docker instance
-
-sudo docker exec -it ubuntu2004 /bin/bash
-root@4cedf1ef8534:~# tar --strip 1 -zxf /tmp/nagioscore.tar.gz -C /tmp/nagios
-
-gzip: stdin: unexpected end of file
-tar: Child returned status 1
-tar: Error is not recoverable: exiting now
-
-
-vagrant@vg-compute-13 ~]$ sudo docker run -it -d --name ubuntu2004-backup ubuntu:20.04 /bin/bash
-453f4a5becb390171786e8876be0f611d97d27b2e0bde7f0719d11a48249ddd6
-
-[vagrant@vg-compute-13 ~]$ sudo docker container ls
-CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES
-453f4a5becb3   ubuntu:20.04   "/bin/bash"   5 seconds ago    Up 3 seconds              ubuntu2004-backup
-4cedf1ef8534   ubuntu:20.04   "/bin/bash"   25 minutes ago   Up 25 minutes             ubuntu2004
-
-[vagrant@vg-compute-13 ~]$ sudo docker exec -it ubuntu2004-backup /bin/bash
-root@453f4a5becb3:/#
-
-~~~~
-
-~~~~
 
 bento/centos-stream-8
 
