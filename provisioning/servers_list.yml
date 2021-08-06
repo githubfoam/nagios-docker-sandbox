@@ -1,0 +1,87 @@
+---
+
+- vagrant_box_host: "vg-compute-09"
+  # vagrant_box: "bento/ubuntu-21.04" #NOT OK
+  # vagrant_box: "bento/ubuntu-20.04" #OK
+  # vagrant_box: "bento/centos-8.3" #OK
+  vagrant_box: "bento/centos-stream-8" #OK 
+  vbox_name: "vbox-compute-09"
+  vbox_ram: 512
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.20.17
+  guest_port: 80
+  host_port: 81
+  server_bootstrap: "provisioning/deploy.yml"
+  shell_provision: "provisioning/bootstrap.sh"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0" 
+  
+- vagrant_box_host: "vg-compute-10" #OK, bridged network, DHCP enabled,nagios bash install
+  # vagrant_box: "bento/centos-stream-8" #OK
+  vagrant_box: "bento/ubuntu-20.04" #OK 
+  vbox_name: "vbox-compute-10"
+  vbox_ram: 1024
+  vbox_cpu: 2
+  network_type: "public_network"
+  vagrant_box_ip: ""  #bridged network, DHCP enabled IP assignment
+  guest_port: 8080
+  host_port: 8157
+  server_bootstrap: "provisioning/deploy.yml"
+  # shell_provision: "provisioning/bootstrap.sh"
+  shell_provision: "scripts/deploy-nagios-v1.sh"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-compute-11" #OK, bridged network, DHCP disabled,manual IP assignment,nagios bash install
+  # vagrant_box: "bento/ubuntu-21.04" #NOT OK
+  # vagrant_box: "bento/ubuntu-20.04" #OK
+  # vagrant_box: "bento/centos-8.3" #OK
+  vagrant_box: "bento/centos-stream-8" #OK 
+  vbox_name: "vbox-compute-11"
+  vbox_ram: 2048
+  vbox_cpu: 2
+  network_type: "public_network"
+  vagrant_box_ip: 192.168.40.1
+  guest_port: 8080
+  host_port: 8158
+  server_bootstrap: "provisioning/deploy.yml"
+  shell_provision: "provisioning/bootstrap.sh"
+  # shell_provision: "scripts/deploy-nagios-v1.sh"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0"  
+
+- vagrant_box_host: "vg-compute-12"
+  # vagrant_box: "bento/ubuntu-21.04" #NOT OK
+  vagrant_box: "bento/ubuntu-20.04" #OK
+  # vagrant_box: "bento/centos-8.3" #OK
+  # vagrant_box: "bento/centos-stream-8" #OK 
+  vbox_name: "vbox-compute-12"
+  vbox_ram: 1024
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.20.20
+  guest_port: 80
+  host_port: 80
+  server_bootstrap: "provisioning/deploy.yml"
+  shell_provision: "provisioning/nagios-docker-alpine311.sh"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0" 
+
+- vagrant_box_host: "vg-compute-13"
+  # vagrant_box: "bento/ubuntu-21.04" #NOT OK
+  # vagrant_box: "bento/ubuntu-20.04" #OK
+  # vagrant_box: "bento/centos-8.3" #OK
+  vagrant_box: "bento/centos-stream-8" #OK 
+  vbox_name: "vbox-compute-13"
+  vbox_ram: 1024
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.20.21
+  guest_port: 8080
+  host_port: 8160
+  server_bootstrap: "provisioning/deploy.yml"
+  shell_provision: "provisioning/nagios-docker-ubuntu2004.sh"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0" 
+
