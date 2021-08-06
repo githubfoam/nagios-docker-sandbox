@@ -73,33 +73,6 @@ bento/centos-stream-8
 
 del Vagrantfile
 vagrant init --template Vagrantfile.erb 
-vagrant up vg-compute-09
->vagrant port vg-compute-09
-The forwarded ports for the machine are listed below. Please note that
-these values may differ from values configured in the Vagrantfile if the
-provider supports automatic port collision detection and resolution.
-
-    22 (guest) => 2201 (host)
-    80 (guest) => 81 (host)
-
-vagrant ssh vg-compute-09
-
-
-[vagrant@vg-compute-09 ~]$ cp -R /vagrant/dockerfiles/ .
-[vagrant@vg-compute-09 ~]$ cd dockerfiles/2/
-[vagrant@vg-compute-09 2]$ sudo docker build -t nagios:nagios446 . --file=Dockerfile.ubuntu2004
-
-
-Step 17/25 : COPY --from=htpasswd /opt/htpasswd.users ${NAGIOS_HOME}/etc/htpasswd.users
-invalid from flag value htpasswd: pull access denied for htpasswd, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
-
-~~~~
-
-~~~~
-bento/centos-stream-8
-
-del Vagrantfile
-vagrant init --template Vagrantfile.erb 
 vagrant up vg-compute-13
 vagrant ssh vg-compute-13
 

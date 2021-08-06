@@ -13,7 +13,7 @@
   guest_port: 80
   host_port: 81
   server_bootstrap: "provisioning/deploy.yml"
-  shell_provision: "provisioning/bootstrap.sh"
+  shell_provision: "scripts/bootstrap.sh"
   # ansible_version: "2.9.2"
   ansible_compatibility_mode: "2.0" 
   
@@ -28,8 +28,7 @@
   guest_port: 8080
   host_port: 8157
   server_bootstrap: "provisioning/deploy.yml"
-  # shell_provision: "provisioning/bootstrap.sh"
-  shell_provision: "scripts/deploy-nagios-v1.sh"
+  shell_provision: "scripts/bootstrap.sh"
   # ansible_version: "2.9.2"
   ansible_compatibility_mode: "2.0"
 
@@ -46,8 +45,7 @@
   guest_port: 8080
   host_port: 8158
   server_bootstrap: "provisioning/deploy.yml"
-  shell_provision: "provisioning/bootstrap.sh"
-  # shell_provision: "scripts/deploy-nagios-v1.sh"
+  shell_provision: "scripts/bootstrap.sh"
   # ansible_version: "2.9.2"
   ansible_compatibility_mode: "2.0"  
 
@@ -64,7 +62,7 @@
   guest_port: 80
   host_port: 80
   server_bootstrap: "provisioning/deploy.yml"
-  shell_provision: "provisioning/nagios-docker-alpine311.sh"
+  shell_provision: "scripts/nagios-docker-alpine311.sh"
   # ansible_version: "2.9.2"
   ansible_compatibility_mode: "2.0" 
 
@@ -81,7 +79,7 @@
   guest_port: 8080
   host_port: 8160
   server_bootstrap: "provisioning/deploy.yml"
-  shell_provision: "provisioning/nagios-docker-ubuntu2004.sh"
+  shell_provision: "scripts/bootstrap.sh"
   # ansible_version: "2.9.2"
   ansible_compatibility_mode: "2.0" 
 
