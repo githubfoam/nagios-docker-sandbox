@@ -69,3 +69,6 @@ jobs:
         sudo apt-get update -qq && sudo apt-get install osquery -qqy
         sudo osqueryctl start osqueryd
         sudo osqueryctl status osqueryd
+    - name: "Install nagios core "
+      run: |
+        sudo bash scripts/deploy-nagios-v1.sh
