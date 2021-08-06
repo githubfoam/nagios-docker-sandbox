@@ -3,7 +3,13 @@ name: "ubuntu nagios core CI workflow"
 
 on:
   push:
-    branches: [ test ]
+    branches: [ main ]
+  schedule:
+      # https://crontab.guru/
+      # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
+      - cron:  '0 0 * * FRI' ##execution of a task in the first minute of the month  
+
+
 
 jobs:
 
