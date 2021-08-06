@@ -1,4 +1,6 @@
-# nagios-sandbox
+# nagios-docker-sandbox
+
+[![ubuntu nagios core CI workflow](https://github.com/githubfoam/nagios-docker-sandbox/actions/workflows/ubuntu-workflow.yml/badge.svg?branch=main)](https://github.com/githubfoam/nagios-docker-sandbox/actions/workflows/ubuntu-workflow.yml)
 
 ~~~~
 bento/ubuntu-20.04
