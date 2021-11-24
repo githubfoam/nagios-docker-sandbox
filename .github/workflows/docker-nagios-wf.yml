@@ -9,7 +9,7 @@ on:
 jobs:
 
   ubuntu-latest-nagios-job:
-    name: "ubuntu nagios images  ubuntu latest"
+    name: "nagios ubuntu 20.04 images  ubuntu latest"
     runs-on: ubuntu-latest
     env:
       version: "latest"
@@ -31,7 +31,7 @@ jobs:
       run: |
         # destroyed afterwards (use --rm )
         # all subsequent Dockerfile commands generate new images and the cache is not used
-        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir} /${dockerfile} 
+        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir}/${dockerfile} 
         docker image ls
         docker image history ${name}:${version} 
         docker system df -v               
@@ -40,12 +40,12 @@ jobs:
       run: |
         # destroyed afterwards (use --rm )
         # all subsequent Dockerfile commands generate new images and the cache is not used
-        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir} /${dockerfile} 
+        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir}/${dockerfile} 
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
         trivy image ${name}:${version}
 
-  ubuntu-latest-apt-job:
-    name: "docker nagios images  ubuntu latest"
+  ubuntu-latest-aptget-job:
+    name: "nagios ubuntuaptget 20.04 ubuntu latest"
     runs-on: ubuntu-latest
     env:
       version: "latest"
@@ -68,8 +68,7 @@ jobs:
       run: |
         # destroyed afterwards (use --rm )
         # all subsequent Dockerfile commands generate new images and the cache is not used
-        # sudo docker build --no-cache --rm  -t ${name}/${version} . --file dockerfiles/${dockerfilename} 
-        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir} /${dockerfile} 
+        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir}/${dockerfile} 
         docker image ls
         docker image history ${name}:${version} 
         docker system df -v               
@@ -78,7 +77,7 @@ jobs:
       run: |
         # destroyed afterwards (use --rm )
         # all subsequent Dockerfile commands generate new images and the cache is not used
-        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir} /${dockerfile} 
+        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir}/${dockerfile} 
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
         trivy image ${name}:${version}       
 
