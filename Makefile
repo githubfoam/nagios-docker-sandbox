@@ -2,9 +2,11 @@ IMAGE := alpine/fio
 APP:="scripts/archlinux-req.sh"
 
 
-	
-deploy-nagios:
-	bash scripts/deploy-nagios-v1.sh
+deploy-ubuntu-nagios:
+	bash scripts/deploy-ubuntu-nagios.sh
+
+deploy-centos-nagios:
+	bash scripts/deploy-centos-nagios-v1.sh
 
 deploy-libvirt:
 	bash scripts/deploy-libvirt.sh
