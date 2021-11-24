@@ -3,7 +3,7 @@ name: "docker nagios CI workflow"
 
 on:
   push:
-    branches: [ test ]
+    branches: [ dev ]
 
 
 jobs:
