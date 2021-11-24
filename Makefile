@@ -1,6 +1,8 @@
 IMAGE := alpine/fio
 APP:="scripts/archlinux-req.sh"
 
+deploy-ubuntuaptget-nagios:
+	bash scripts/deploy-ubuntuaptget-nagios.sh
 
 deploy-ubuntu-nagios:
 	bash scripts/deploy-ubuntu-nagios.sh

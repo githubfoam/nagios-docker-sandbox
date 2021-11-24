@@ -74,7 +74,7 @@ jobs:
   #       sudo bash scripts/deploy-nagios-v1.sh
 
   ubuntu-latest-nagios-job:
-    name: "nagios on ubuntu-20.04"
+    name: "nagios on ubuntu-latest"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -83,3 +83,14 @@ jobs:
     - name: "Install nagios core "
       run: |
         sudo make deploy-ubuntu-nagios
+
+  ubuntu-latest-ubuntuaptget-nagios-job:
+    name: "ubuntuaptget nagios on ubuntu-latest"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status 
+    - name: "Install nagios core "
+      run: |
+        sudo make deploy-ubuntuaptget-nagios        
