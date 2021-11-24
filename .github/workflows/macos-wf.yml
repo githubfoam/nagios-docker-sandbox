@@ -1,0 +1,143 @@
+
+
+name: "macOS CI workflow"
+
+
+on:
+  push:
+    branches: [ dev ]
+
+
+
+jobs:
+
+
+
+  macos-latest:
+      name: "MacPorts macos-latest 10.15.7"
+      runs-on: macos-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: "brew update"
+        run: brew update      
+      # - name: "brew upgrade"
+      #   run: brew upgrade
+      - name: "check on brew version"
+        run: brew --version   #Homebrew 2.5.12 
+      - name: "check on xcode version"
+        run: |
+          /usr/bin/xcodebuild -version
+          which xcodebuild
+          xcodebuild -version
+        # https://guide.macports.org/#installing.xcode  
+      - name: "MacPorts Source Install"
+        run: |
+          export MACPORTS_VERSION="2.7.1"
+          echo $MACPORTS_VERSION 
+          curl -O https://distfiles.macports.org/MacPorts/MacPorts-$MACPORTS_VERSION.tar.bz2          
+          tar xf MacPorts-$MACPORTS_VERSION.tar.bz2
+          cd MacPorts-$MACPORTS_VERSION/
+          ./configure
+          make
+          sudo make install
+      - name: "MacPorts Shell Configuration"
+        run: |
+          echo $PATH          
+          export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+          port version
+          sudo port -v selfupdate
+          port version
+          sudo port install nagios  
+          port contents nagios #see what files were installed by nagios
+          sudo port selfupdate && sudo port upgrade nagios
+          sudo port install nagios-plugins
+          port contents nagios-plugins #see what files were installed by nagios-plugins
+          sudo port selfupdate && sudo port upgrade nagios-plugins #upgrade nagios-plugins
+      # - name: "Install Nagios with MacPorts"
+      #   run: |
+      #     sudo port -v selfupdate
+      #     sudo port install nagios 
+      #     port contents nagios #see what files were installed by nagios  
+      # - name: "Install Nagios  with MacPorts"
+      #   run: |
+      #     sudo port -v selfupdate
+      #     sudo port install nagios 
+      #     port contents nagios #see what files were installed by nagios            
+      # - name: "Upgrade Nagios Plugins with MacPorts"
+      #   run: |
+      #     sudo port -v selfupdate
+      #     sudo port install nagios-plugins
+      #     port contents nagios-plugins #see what files were installed by nagios-plugins
+      #     sudo port selfupdate && sudo port upgrade nagios-plugins #upgrade nagios-plugins                
+      # - name: "brew cask list"
+      #   run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+      # - name: "brew list"
+      #   # run: brew list #List all the installed formulas
+      #   run: brew list --formula #List all the installed formulas
+      #   # Calling `brew list` to only list formulae is disabled! Use `brew list --formula` instead
+      # - name: "Get OS X System Version"
+      #   run: sw_vers       
+      # - name: "Get Mac System Details with system_profiler"
+      #   run: system_profiler | more  
+      # - name: "osfingerprinting"
+      #   run: uname -a                           
+      # - name: "brew doctor"
+      #   run: |
+      #     brew doctor #Check brew for potential problems 
+
+  # macos-110:
+  #     name: "macos-11.0"
+  #     runs-on: macos-11.0 # ProductVersion 11.0.1 macOS Big Sur
+  #     steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v1
+  #     - name: "brew update"
+  #       run: brew update      
+  #     # - name: "brew upgrade"
+  #     #   run: brew upgrade
+  #     - name: "check on brew version"
+  #       run: brew --version   #Homebrew 2.5.12   
+  #     - name: "brew cask list"
+  #       run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+  #     - name: "brew list"
+  #       # run: brew list #List all the installed formulas
+  #       run: brew list --formula #List all the installed formulas
+  #       # Calling `brew list` to only list formulae is disabled! Use `brew list --formula` instead
+  #     - name: "Get OS X System Version"
+  #       run: sw_vers       
+  #     - name: "Get Mac System Details with system_profiler"
+  #       run: system_profiler | more  
+  #     - name: "osfingerprinting"
+  #       run: uname -a                           
+  #     # - name: "brew doctor"
+  #     #   run: |
+  #     #     brew doctor #Check brew for potential problems 
+
+  # macos-1015:
+  #     name: "macos-10.15"
+  #     runs-on: macos-10.15 # ProductVersion 10.15.7
+  #     steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v1
+  #     - name: "brew update"
+  #       run: brew update      
+  #     # - name: "brew upgrade"
+  #     #   run: brew upgrade
+  #     - name: "check on brew version"
+  #       run: brew --version   #Homebrew 2.5.12   
+  #     - name: "brew cask list"
+  #       run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+  #     - name: "brew list"
+  #       # run: brew list #List all the installed formulas
+  #       run: brew list --formula #List all the installed formulas
+  #       # Calling `brew list` to only list formulae is disabled! Use `brew list --formula` instead
+  #     - name: "Get OS X System Version"
+  #       run: sw_vers       
+  #     - name: "Get Mac System Details with system_profiler"
+  #       run: system_profiler | more  
+  #     - name: "osfingerprinting"
+  #       run: uname -a                           
+  #     # - name: "brew doctor"
+  #     #   run: |
+  #     #     brew doctor #Check brew for potential problems 
