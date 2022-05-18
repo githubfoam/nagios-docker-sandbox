@@ -1,0 +1,22 @@
+#https://quay.io/repository/centos/centos?tag=stream8&tab=tags
+FROM quay.io/centos/centos:stream9
+
+LABEL org.opencontainers.image.authors="githubfoam"
+
+ENV NAGIOS_USER nagios \
+    NAGIOS_GROUP nagios \
+    NAGIOS_WEB_USER nagiosadmin \
+    NAGIOS_WEB_PASS adminpass \
+    NAGIOS_HOME /usr/local/nagios 
+
+# verify centos stream9 
+RUN echo "================os-release=======================" && \
+    echo "=================================================" && \
+    cat /etc/os-release && \
+    echo "=================================================" && \
+    echo "================os-release======================="
+
+RUN yum update -yq && \
+    yum clean all && \
+    yum autoremove -yq && \
+    rm -rf /var/cache/*/* && \ 

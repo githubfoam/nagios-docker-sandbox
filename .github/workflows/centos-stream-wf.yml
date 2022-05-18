@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       version: "latest"
-      name: "centos-stream8/nagios"
+      name: "centos-stream9/nagios"
       dockerdir: "dockerfiles/3"
-      dockerfile: "Dockerfile.centos.stream8"
+      dockerfile: "Dockerfile.centos.stream9"
     steps:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
