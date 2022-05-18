@@ -22,7 +22,7 @@ RUN yum update -yq && \
     rm -rf /var/cache/*/* && \ 
     # ---- make sure NAGIOS_HOME exists
     #mkdir -p ${NAGIOS_HOME}  && \
-    mkdir -p ${NAGIOS_HOME}  && \
+    mkdir -p /usr/local/nagios  && \
     # ---- ensure user existence before provision
-    groupadd /usr/local/nagios && \
+    groupadd ${NAGIOS_GROUP}  && \
     useradd --system -d ${NAGIOS_HOME} -g ${NAGIOS_GROUP} ${NAGIOS_USER}
