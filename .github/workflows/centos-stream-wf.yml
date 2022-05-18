@@ -9,7 +9,7 @@ on:
 jobs:
 
   ubuntu-latest-nagios-job:
-    name: "nagios centos stream 8 image  ubuntu latest"
+    name: "nagios centos stream 9 image  ubuntu latest"
     runs-on: ubuntu-latest
     env:
       version: "latest"
