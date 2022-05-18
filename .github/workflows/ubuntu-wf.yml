@@ -1,4 +1,4 @@
-name: "docker nagios CI workflow"
+name: "ubuntu nagios CI workflow"
 
 
 on:
@@ -52,7 +52,7 @@ jobs:
       name: "ubuntu2004/nagios"
       dockerdir: "dockerfiles"
       dockerfile: "Dockerfile.ubuntu2004.nagios"      
-      dockerfilename: "Dockerfile.ubuntu2004.nagios.aptget"
+      # dockerfilename: "Dockerfile.ubuntu2004.nagios.aptget"
     steps:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
