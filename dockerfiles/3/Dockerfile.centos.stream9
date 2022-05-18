@@ -26,12 +26,12 @@ RUN yum update -yq && \
     #mkdir -p /usr/local/nagios  && \
     # ---- ensure user existence before provision
     groupadd ${NAGIOS_GROUP}  && \
-    # useradd --system -d ${NAGIOS_HOME} -g ${NAGIOS_GROUP} ${NAGIOS_USER} && \
     useradd --system -d ${NAGIOS_HOME} -g ${NAGIOS_GROUP} ${NAGIOS_USER} && \
     echo "============================Setup Pre-requsites==============" && \
     # Set SELinux in permissive mode
     #current mode of SELinux
-    sestatus  && \
+    # sestatus: command not found
+    # sestatus  && \ 
     #current mode of SELinux
     getenforce  && \
     sudo sed -i 's/SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config && \
