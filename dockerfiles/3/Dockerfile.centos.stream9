@@ -27,7 +27,7 @@ RUN yum update -yq && \
     # ---- ensure user existence before provision
     groupadd ${NAGIOS_GROUP}  && \
     # useradd --system -d ${NAGIOS_HOME} -g ${NAGIOS_GROUP} ${NAGIOS_USER} && \
-    useradd --system -d ${NAGIOS_HOME} -g nagios nagios && \
+    useradd --system -d ${NAGIOS_HOME} -g ${NAGIOS_GROUP} nagios && \
     echo "============================Setup Pre-requsites==============" && \
     # Set SELinux in permissive mode
     #current mode of SELinux
