@@ -9,7 +9,7 @@ on:
 jobs:
 
   ubuntu-latest-nagios-job:
-    name: "nagios ubuntu 20.04 images  ubuntu latest"
+    name: "nagios centos stream 8 image  ubuntu latest"
     runs-on: ubuntu-latest
     env:
       version: "latest"
@@ -44,42 +44,7 @@ jobs:
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
         trivy image ${name}:${version}
 
-  ubuntu-latest-aptget-job:
-    name: "nagios ubuntuaptget 20.04 ubuntu latest"
-    runs-on: ubuntu-latest
-    env:
-      version: "latest"
-      name: "ubuntu2004/nagios"
-      dockerdir: "dockerfiles"
-      dockerfile: "Dockerfile.ubuntu2004.nagios"      
-      # dockerfilename: "Dockerfile.ubuntu2004.nagios.aptget"
-    steps:
-    - uses: actions/checkout@v2
-    - name: "os fingerprinting"
-      run: |
-        hostnamectl status
-        lsb_release -a
-        lsb_release -d
-        cat /etc/lsb-release
-        cat /etc/issue
-        cat /etc/os-release
-        sudo apt-get install -y neofetch && neofetch         
-    - name: "docker build nagios base"
-      run: |
-        # destroyed afterwards (use --rm )
-        # all subsequent Dockerfile commands generate new images and the cache is not used
-        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir}/${dockerfile} 
-        docker image ls
-        docker image history ${name}:${version} 
-        docker system df -v               
-        docker image inspect ${name}:${version} 
-    - name: "docker scan trivy archlinux base "
-      run: |
-        # destroyed afterwards (use --rm )
-        # all subsequent Dockerfile commands generate new images and the cache is not used
-        sudo docker build --no-cache --rm  -t ${name}:${version} . --file ${dockerdir}/${dockerfile} 
-        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
-        trivy image ${name}:${version}       
+       
 
 
 
