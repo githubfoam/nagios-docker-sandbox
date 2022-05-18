@@ -20,7 +20,6 @@ RUN yum update -yq && \
     yum clean all && \
     yum autoremove -yq && \
     rm -rf /var/cache/*/* && \ 
-    # ---- make sure NAGIOS_HOME exists
     mkdir -p ${NAGIOS_HOME}  && \
     # ---- ensure user existence before provision
     groupadd ${NAGIOS_GROUP}  && \
