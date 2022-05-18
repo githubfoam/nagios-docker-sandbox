@@ -3,6 +3,12 @@ FROM quay.io/centos/centos:stream8
 
 LABEL org.opencontainers.image.authors="githubfoam"
 
+ENV NAGIOS_USER nagios
+ENV NAGIOS_GROUP nagios  
+ENV NAGIOS_WEB_USER nagiosadmin
+ENV NAGIOS_WEB_PASS adminpass 
+ENV NAGIOS_HOME "/usr/local/nagios" 
+
 # verify centos stream8 
 RUN echo "================os-release=======================" && \
     echo "=================================================" && \

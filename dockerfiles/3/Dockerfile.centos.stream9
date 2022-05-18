@@ -30,7 +30,7 @@ RUN yum update -yq && \
     echo "============================Setup Pre-requsites==============" && \
     # Set SELinux in permissive mode
     #current mode of SELinux
-    rpm -qf $(which sestatus)
+    yum install which -y && rpm -qf $(which sestatus)
     # sestatus: command not found
     # sestatus  && \ 
     #current mode of SELinux
