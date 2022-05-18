@@ -30,15 +30,15 @@ RUN yum update -yq && \
     echo "============================Setup Pre-requsites==============" && \
     # Set SELinux in permissive mode
     #current mode of SELinux
-    yum install which -y && rpm -qf $(which sestatus)
+    yum install policycoreutils -y && \ 
     # sestatus: command not found
-    # sestatus  && \ 
+    sestatus  && \ 
     #current mode of SELinux
-    # getenforce  && \
-    # sudo sed -i 's/SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config && \
-    # sudo setenforce 0 && \
-    # #current mode of SELinux
-    # sestatus  && \
-    # #current mode of SELinux
-    # getenforce  && \
-    # echo "dockerfile test"
+    getenforce  && \
+    sed -i 's/SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config && \
+    setenforce 0 && \
+    #current mode of SELinux
+    sestatus  && \
+    #current mode of SELinux
+    getenforce  && \
+    echo "dockerfile test"
