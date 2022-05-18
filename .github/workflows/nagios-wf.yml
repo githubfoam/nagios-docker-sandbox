@@ -93,4 +93,6 @@ jobs:
       run: hostnamectl status 
     - name: "Install nagios core "
       run: |
-        sudo make deploy-ubuntuaptget-nagios        
+        sudo make deploy-ubuntuaptget-nagios      
+
+        
