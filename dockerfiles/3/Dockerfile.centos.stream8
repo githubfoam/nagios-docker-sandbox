@@ -14,3 +14,27 @@ RUN yum update -yq && \
     yum clean all && \
     yum autoremove -yq && \
     rm -rf /var/cache/*/*
+
+RUN yum update -yq && \
+    yum clean all && \
+    yum autoremove -yq && \
+    rm -rf /var/cache/*/* && \ 
+    # ---- make sure NAGIOS_HOME exists
+    mkdir -p ${NAGIOS_HOME}  && \
+    #mkdir -p /usr/local/nagios  && \
+    # ---- ensure user existence before provision
+    groupadd ${NAGIOS_GROUP}  && \
+    useradd --system -d ${NAGIOS_HOME} -g ${NAGIOS_GROUP} ${NAGIOS_USER} && \
+    echo "============================Setup Pre-requsites==============" && \
+    # Set SELinux in permissive mode
+    #current mode of SELinux
+    sestatus  && \ 
+    #current mode of SELinux
+    getenforce  && \
+    sudo sed -i 's/SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config && \
+    sudo setenforce 0 && \
+    #current mode of SELinux
+    sestatus  && \
+    #current mode of SELinux
+    getenforce  && \
+    echo "dockerfile test"
