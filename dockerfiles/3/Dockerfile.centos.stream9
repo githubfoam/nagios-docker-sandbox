@@ -44,7 +44,7 @@ RUN yum update -yq && \
 #     getenforce 
 
 RUN echo "============================Install dependencies============================================================="  && \
-    dnf update -y && \
+    dnf update -y
     # Module or Group 'php' is not available.
     # dnf install -y @php && \
     # dnf install -y @perl @httpd wget unzip glibc automake glibc-common gettext autoconf php php-cli gcc gd gd-devel net-snmp openssl-devel unzip net-snmp postfix net-snmp-utils && \
